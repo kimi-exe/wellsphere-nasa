@@ -1,6 +1,6 @@
 // Unified Environmental Data Service
-import { earthquakeAPI, enhancedEarthquakeMonitor, type EarthquakeData } from './earthquakeAPI';
-import { weatherAPI, type WeatherHazardData, type SpaceWeatherData } from './weatherAPI';
+import { enhancedEarthquakeMonitor, type EarthquakeData } from './earthquakeAPI';
+import { weatherAPI, type WeatherHazardData } from './weatherAPI';
 import { nasaAPI, type SoilData, type TemperatureData } from './nasaAPI';
 
 export interface EnvironmentalDataPoint {
@@ -45,13 +45,11 @@ export class EnvironmentalDataService {
       const [
         earthquakes,
         weatherHazards,
-        spaceWeather,
         soilData,
         temperatureData
       ] = await Promise.allSettled([
         enhancedEarthquakeMonitor.getLatestEarthquakeData(),
         weatherAPI.getWeatherHazards(),
-        weatherAPI.getSpaceWeatherData(),
         nasaAPI.getSoilData(),
         nasaAPI.getTemperatureData()
       ]);
@@ -67,7 +65,7 @@ export class EnvironmentalDataService {
         console.warn('⚠️ Failed to fetch earthquake data:', earthquakes.reason);
       }
 
-      // Process weather hazards
+      // Process weather hazards (includes both heatwave and flood data)
       if (weatherHazards.status === 'fulfilled') {
         const weatherPoints = weatherHazards.value.map(weather => this.convertWeatherData(weather));
         allData.push(...weatherPoints);

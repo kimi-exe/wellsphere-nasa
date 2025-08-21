@@ -111,7 +111,7 @@ export class NASAAPIService {
 
     return soilPoints.map((point, index) => {
       const variation = (Math.random() - 0.5) * 1.5; // ±0.75 pH variation
-      const ph = Math.max(4.0, Math.min(9.0, point.basepe + variation));
+      const ph = Math.max(4.0, Math.min(9.0, point.baseph + variation));
       const moisture = 20 + Math.random() * 40; // 20-60% moisture
       const temperature = 25 + Math.random() * 15; // 25-40°C soil temp
       

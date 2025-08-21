@@ -79,12 +79,15 @@ function getSeverityColor(severity: string): string {
 export default function LeafletMap({ center, zoom, data, visibleLayers }: LeafletMapProps) {
   // Fix for leaflet icon issues in Next.js
   useEffect(() => {
-    const L = require('leaflet');
-    delete L.Icon.Default.prototype._getIconUrl;
-    L.Icon.Default.mergeOptions({
-      iconRetinaUrl: '/leaflet-images/marker-icon-2x.png',
-      iconUrl: '/leaflet-images/marker-icon.png',
-      shadowUrl: '/leaflet-images/marker-shadow.png',
+    import('leaflet').then((L) => {
+      delete (L.Icon.Default.prototype as { _getIconUrl?: unknown })._getIconUrl;
+      L.Icon.Default.mergeOptions({
+        iconRetinaUrl: '/leaflet-images/marker-icon-2x.png',
+        iconUrl: '/leaflet-images/marker-icon.png',
+        shadowUrl: '/leaflet-images/marker-shadow.png',
+      });
+    }).catch(error => {
+      console.warn('Failed to configure Leaflet icons:', error);
     });
   }, []);
 

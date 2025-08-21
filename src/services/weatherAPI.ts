@@ -37,7 +37,11 @@ export class WeatherAPIService {
       // Process the latest few readings
       const recentData = data.slice(-10);
       
-      return recentData.map((reading: any, index: number) => ({
+      return recentData.map((reading: {
+        time_tag: string;
+        flux?: number;
+        observed_flux?: number;
+      }, index: number) => ({
         id: `space_weather_${index}`,
         type: 'space_weather' as const,
         intensity: this.calculateSpaceWeatherIntensity(reading),
@@ -52,14 +56,20 @@ export class WeatherAPIService {
     }
   }
 
-  private calculateSpaceWeatherIntensity(reading: any): number {
+  private calculateSpaceWeatherIntensity(reading: {
+    flux?: number;
+    observed_flux?: number;
+  }): number {
     // Calculate intensity based on flux readings
     const flux1 = reading.flux || 0;
     const flux2 = reading.observed_flux || 0;
     return Math.max(flux1, flux2) * 1000; // Scale for display
   }
 
-  private getSpaceWeatherDescription(reading: any): string {
+  private getSpaceWeatherDescription(reading: {
+    flux?: number;
+    observed_flux?: number;
+  }): string {
     const intensity = this.calculateSpaceWeatherIntensity(reading);
     if (intensity > 100) return 'High solar activity detected';
     if (intensity > 50) return 'Moderate solar activity';

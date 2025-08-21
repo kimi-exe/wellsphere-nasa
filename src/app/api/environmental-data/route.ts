@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     if (refresh) {
       data = await environmentalDataService.refreshData();
     } else if (type && ['heatwave', 'flood', 'soil', 'earthquake'].includes(type)) {
-      data = await environmentalDataService.getDataByType(type as any);
+      data = await environmentalDataService.getDataByType(type as 'heatwave' | 'flood' | 'soil' | 'earthquake');
     } else {
       // Try to get cached data first
       const cached = environmentalDataService.getCachedData();

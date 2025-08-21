@@ -17,6 +17,19 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import EnvironmentalMap from '@/components/EnvironmentalMap';
 
+interface ApiResponse {
+  success: boolean;
+  data: EnvironmentalData[];
+  error?: string;
+  apiStats?: {
+    total: number;
+    critical: number;
+    high: number;
+    moderate: number;
+  };
+  apiTimestamp?: string;
+}
+
 interface EnvironmentalData {
   id: string;
   lat: number;
@@ -85,8 +98,8 @@ export default function EnvironmentalMapPage() {
       }
       
       setMapData(result.data);
-      setStats(result.stats);
-      setLastUpdated(result.timestamp);
+      setStats(result.apiStats);
+      setLastUpdated(result.apiTimestamp || new Date().toISOString());
       
     } catch (err) {
       console.error('Error fetching map data:', err);

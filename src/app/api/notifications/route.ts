@@ -5,7 +5,7 @@ import nodemailer from 'nodemailer';
 // For demo purposes, we'll simulate email sending
 const createTransporter = () => {
   // In production, you would use real SMTP credentials
-  return nodemailer.createTransporter({
+  return nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER || 'demo@wellsphere.com',

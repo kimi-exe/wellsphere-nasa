@@ -31,3 +31,64 @@ body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+/* Environmental Map Specific Styles */
+.environmental-controls {
+  pointer-events: auto !important;
+  z-index: 1000 !important;
+}
+
+.environmental-controls > * {
+  pointer-events: auto !important;
+}
+
+.layer-toggle-button {
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.layer-toggle-button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: scale(1.02) !important;
+}
+
+.layer-toggle-button.active {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(34, 197, 94, 0.5) !important;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2), 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ensure Leaflet controls don't interfere */
+.leaflet-control-container {
+  pointer-events: none !important;
+}
+
+.leaflet-control {
+  pointer-events: auto !important;
+}
+
+/* Make sure map tiles don't cover our controls */
+.leaflet-container {
+  z-index: 1 !important;
+}
+
+.leaflet-map-pane {
+  z-index: 1 !important;
+}
+
+/* Loading animation improvements */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(34, 197, 94, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.8), 0 0 30px rgba(34, 197, 94, 0.6);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}

@@ -140,13 +140,13 @@ export default function EnvironmentalMap({ selectedLocation }: EnvironmentalMapP
   };
 
   const layerTypes = [
-    { key: 'heatwave', label: 'Heatwave', icon: Thermometer, color: '#f97316' },
-    { key: 'flood', label: 'Flood', icon: Droplets, color: '#3b82f6' },
-    { key: 'soil', label: 'Soil Quality', icon: Mountain, color: '#a855f7' },
-    { key: 'earthquake', label: 'Earthquake', icon: Activity, color: '#ef4444' }
+    { key: 'heatwave' as const, label: 'Heatwave', icon: Thermometer, color: '#f97316' },
+    { key: 'flood' as const, label: 'Flood', icon: Droplets, color: '#3b82f6' },
+    { key: 'soil' as const, label: 'Soil Quality', icon: Mountain, color: '#a855f7' },
+    { key: 'earthquake' as const, label: 'Earthquake', icon: Activity, color: '#ef4444' }
   ];
 
-  const toggleLayer = (layerKey: string) => {
+  const toggleLayer = (layerKey: keyof typeof visibleLayers) => {
     setVisibleLayers(prev => ({
       ...prev,
       [layerKey]: !prev[layerKey]
@@ -184,7 +184,7 @@ export default function EnvironmentalMap({ selectedLocation }: EnvironmentalMapP
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className="absolute top-4 left-4 z-30 space-y-2 max-w-xs"
+        className="absolute top-4 left-4 z-30 space-y-2 max-w-xs environmental-controls"
       >
         {/* Layer Toggle Controls */}
         <div className="bg-white/10 backdrop-blur-lg rounded-lg p-3 space-y-2 min-w-[200px]">
@@ -202,10 +202,10 @@ export default function EnvironmentalMap({ selectedLocation }: EnvironmentalMapP
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => toggleLayer(layer.key)}
-                className={`flex items-center justify-between w-full p-2 rounded-lg transition-colors border ${
+                className={`layer-toggle-button flex items-center justify-between w-full p-3 rounded-lg transition-all duration-200 ${
                   visibleLayers[layer.key]
-                    ? 'bg-white/20 text-white border-white/30 shadow-lg'
-                    : 'bg-white/5 text-gray-400 border-white/10 hover:bg-white/10'
+                    ? 'active text-white'
+                    : 'text-gray-400 hover:text-white'
                 }`}
               >
                 <div className="flex items-center space-x-2">
@@ -231,51 +231,53 @@ export default function EnvironmentalMap({ selectedLocation }: EnvironmentalMapP
 
         {/* Reset View Button */}
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={resetView}
-          className="bg-white/10 backdrop-blur-lg rounded-lg p-3 flex items-center space-x-2 text-white hover:bg-white/20 transition-colors"
+          className="layer-toggle-button flex items-center space-x-2 text-white p-3 rounded-lg"
         >
           <RotateCcw size={16} />
-          <span className="text-sm">Reset View</span>
+          <span className="text-sm font-medium">Reset View</span>
         </motion.button>
 
         {/* Refresh Data Button */}
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: loading ? 1 : 1.02 }}
+          whileTap={{ scale: loading ? 1 : 0.98 }}
           onClick={refreshData}
           disabled={loading}
-          className="bg-white/10 backdrop-blur-lg rounded-lg p-3 flex items-center space-x-2 text-white hover:bg-white/20 transition-colors disabled:opacity-50"
+          className={`layer-toggle-button flex items-center space-x-2 text-white p-3 rounded-lg transition-all ${
+            loading ? 'opacity-75 cursor-not-allowed pulse-glow' : 'hover:text-green-300'
+          }`}
         >
-          <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
-          <span className="text-sm">{loading ? 'Loading...' : 'Refresh Data'}</span>
+          <RefreshCw size={16} className={loading ? 'animate-spin text-green-400' : ''} />
+          <span className="text-sm font-medium">{loading ? 'Loading...' : 'Refresh Data'}</span>
         </motion.button>
 
         {/* Auto-refresh Toggle */}
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => setAutoRefresh(!autoRefresh)}
-          className={`bg-white/10 backdrop-blur-lg rounded-lg p-3 flex items-center space-x-2 text-white hover:bg-white/20 transition-colors ${
-            autoRefresh ? 'ring-2 ring-green-400' : ''
+          className={`layer-toggle-button flex items-center space-x-2 text-white p-3 rounded-lg transition-all ${
+            autoRefresh ? 'active ring-2 ring-green-400/50' : ''
           }`}
         >
           <Wifi size={16} className={autoRefresh ? 'text-green-400' : ''} />
-          <span className="text-sm">{autoRefresh ? 'Auto-Refresh ON' : 'Auto-Refresh OFF'}</span>
+          <span className="text-sm font-medium">{autoRefresh ? 'Auto-Refresh ON' : 'Auto-Refresh OFF'}</span>
         </motion.button>
 
         {/* Map Mode Toggle */}
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => setUseFallback(!useFallback)}
-          className={`bg-white/10 backdrop-blur-lg rounded-lg p-3 flex items-center space-x-2 text-white hover:bg-white/20 transition-colors ${
-            useFallback ? 'ring-2 ring-cyan-400' : ''
+          className={`layer-toggle-button flex items-center space-x-2 text-white p-3 rounded-lg transition-all ${
+            useFallback ? 'active ring-2 ring-cyan-400/50' : ''
           }`}
         >
-          <MapPin size={16} />
-          <span className="text-sm">{useFallback ? 'Fallback' : 'OpenStreetMap'}</span>
+          <MapPin size={16} className={useFallback ? 'text-cyan-400' : ''} />
+          <span className="text-sm font-medium">{useFallback ? 'Fallback Map' : 'OpenStreetMap'}</span>
         </motion.button>
       </motion.div>
 
@@ -304,7 +306,7 @@ export default function EnvironmentalMap({ selectedLocation }: EnvironmentalMapP
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="absolute bottom-4 right-4 z-30 space-y-2 max-w-xs"
+        className="absolute bottom-4 right-4 z-30 space-y-2 max-w-xs environmental-controls"
       >
         {/* Data Statistics */}
         {dataStats && (

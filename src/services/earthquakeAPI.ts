@@ -28,13 +28,18 @@ export class EarthquakeAPIService {
     limit?: number;
   } = {}): Promise<EarthquakeData[]> {
     try {
-      const params = new URLSearchParams({
-        format: 'geojson',
-        ...options,
-        starttime: options.starttime || new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-        minmagnitude: (options.minmagnitude || 3.0).toString(),
-        limit: (options.limit || 50).toString()
-      });
+      const params = new URLSearchParams();
+      params.set('format', 'geojson');
+      params.set('starttime', options.starttime || new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]);
+      params.set('minmagnitude', (options.minmagnitude || 3.0).toString());
+      params.set('limit', (options.limit || 50).toString());
+      
+      if (options.endtime) params.set('endtime', options.endtime);
+      if (options.maxmagnitude !== undefined) params.set('maxmagnitude', options.maxmagnitude.toString());
+      if (options.minlatitude !== undefined) params.set('minlatitude', options.minlatitude.toString());
+      if (options.maxlatitude !== undefined) params.set('maxlatitude', options.maxlatitude.toString());
+      if (options.minlongitude !== undefined) params.set('minlongitude', options.minlongitude.toString());
+      if (options.maxlongitude !== undefined) params.set('maxlongitude', options.maxlongitude.toString());
 
       const response = await fetch(`${this.baseURL}?${params}`);
       
@@ -44,7 +49,19 @@ export class EarthquakeAPIService {
 
       const data = await response.json();
 
-      return data.features.map((feature: any) => ({
+      return data.features.map((feature: {
+        id: string;
+        geometry: { coordinates: [number, number, number] };
+        properties: {
+          mag: number;
+          place: string;
+          time: number;
+          sig?: number;
+          tsunami?: number;
+          felt?: number;
+          magType?: string;
+        };
+      }) => ({
         id: feature.id,
         lat: feature.geometry.coordinates[1],
         lng: feature.geometry.coordinates[0],

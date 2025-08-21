@@ -11,7 +11,8 @@ import {
   BarChart3, 
   Gamepad2,
   Leaf,
-  LogOut
+  LogOut,
+  MapIcon
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -36,6 +37,7 @@ export default function Dashboard() {
     { id: 'flood', label: 'Flood', icon: Droplets, href: '/dashboard/flood' },
     { id: 'soil', label: 'Soil Quality', icon: Mountain, href: '/dashboard/soil' },
     { id: 'earthquake', label: 'Earthquake', icon: Activity, href: '/dashboard/earthquake' },
+    { id: 'environmental-map', label: 'Risk Map', icon: MapIcon, href: '/dashboard/environmental-map' },
     { id: 'analytics', label: 'Analytics', icon: BarChart3, href: '/dashboard/analytics' },
     { id: 'game', label: 'Game', icon: Gamepad2, href: '/dashboard/game' },
   ];
@@ -304,6 +306,39 @@ export default function Dashboard() {
               </div>
             </motion.div>
           </div>
+
+          {/* Environmental Risk Map Feature */}
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className="mt-8 bg-gradient-to-r from-red-600/20 via-orange-600/20 to-red-600/20 backdrop-blur-lg border border-red-500/30 rounded-xl p-6"
+          >
+            <Link href="/dashboard/environmental-map">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-4">
+                  <div className="p-3 bg-red-500/20 rounded-lg">
+                    <MapIcon className="text-red-400" size={32} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white">🚨 Environmental Risk Map</h3>
+                    <p className="text-gray-300 text-sm">
+                      Interactive map showing real-time NASA data with danger zone analysis
+                    </p>
+                    <div className="flex items-center space-x-4 mt-2 text-xs text-gray-400">
+                      <span>• Live satellite data</span>
+                      <span>• Red danger zones</span>
+                      <span>• Multi-hazard analysis</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
+                    NEW
+                  </div>
+                  <p className="text-xs text-gray-400 mt-1">Click to explore →</p>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
 
           {/* Quick Actions */}
           <div className="mt-8">

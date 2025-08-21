@@ -30,8 +30,18 @@ Climate change brings about new complexities for maintaining the wellbeing of so
 2. **Flood Tracker**: Precipitation analysis and flood risk assessment
 3. **Soil Quality**: Comprehensive soil composition and fertility analysis
 4. **Earthquake Monitor**: Seismic activity tracking using USGS data
-5. **AI Analytics**: Machine learning-powered insights and recommendations
-6. **EcoQuest Game**: Interactive environmental education quiz
+5. **🗺️ Environmental Risk Map**: Interactive Google Maps with NASA data integration
+6. **AI Analytics**: Machine learning-powered insights and recommendations
+7. **EcoQuest Game**: Interactive environmental education quiz
+
+### 🗺️ Interactive Environmental Map
+- **Real-time NASA Data Integration**: Live satellite data from MODIS, GPM, and Landsat
+- **Google Maps Integration**: Interactive map interface with custom markers
+- **Danger Zone Visualization**: Red circles marking high-risk areas
+- **Multi-layer Support**: Toggle between heatwave, flood, soil, and earthquake data
+- **USGS Real-time Seismic Data**: Live earthquake monitoring
+- **Risk Assessment**: Color-coded severity levels (Critical, High, Medium, Low)
+- **Location-based Filtering**: Focus on specific Bangladesh divisions
 
 ### 🔔 Smart Notifications
 - **Email Alerts**: Automated notifications for environmental hazards
@@ -85,11 +95,23 @@ Our platform integrates with multiple NASA and external APIs:
 
 3. **Set up environment variables**
    ```bash
-   cp .env.example .env.local
+   cp .env.local.example .env.local
    ```
    Edit `.env.local` with your API keys:
+   
+   **Required for Environmental Map:**
+   - Google Maps API Key: Get from [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+   
+   **NASA API Keys:**
    - NASA API Key: `Jv2QqcXN3ZPZRrIXKmjHQM7yqkmwNpMiKB7sNbOj`
-   - NASA Earth API Token: `eyJ0eXAiOiJKV1QiLCJvcmlnaW4iOiJFYXJ0aGRhdGEgTG9naW4iLCJzaWciOiJlZGxqd3RwdWJrZXlfb3BzIiwiYWxnIjoiUlMyNTYifQ.eyJ0eXBlIjoiVXNlciIsInVpZCI6ImtpbnNodWttb2huYXRhIiwiZXhwIjoxNzYwOTE4Mzk5LCJpYXQiOjE3NTU3MDAzODYsImlzcyI6Imh0dHBzOi8vdXJzLmVhcnRoZGF0YS5uYXNhLmdvdiIsImlkZW50aXR5X3Byb3ZpZGVyIjoiZWRsX29wcyIsImFjciI6ImVkbCIsImFzc3VyYW5jZV9sZXZlbCI6M30.eKW1qwZnM6LZMl4qGx9PSXXzQh0MabLQxQ4RayjWSjRnGisDLr_BOJhS2_WLo2DEtcT-CqGB8g9R7inLCx_YzyOR2Jgw0I5-0gOLQE2BeNOeyFyE_yZVg5_7Ihuwue1kjZEqAXuCmX-Kpc-AiL5J7FiwvesL2SvIonF3u0wNHmnp7ZlcSG4HY0kYQSXr-o5mRDM4g8PTDoYvQwQiez0GVLJJw_ONubGmNHV_Kuq_-1vdIdGxZEU3WYa-IQA-UBYJjEwlU_1zbpO6yEHWLdfIZ0XCIRg2F-EhtRvtTEjyzqklgZadM_9zaLiRQ5jNb-_jBWtXs2AvoPB1EJEUY9-6Iw`
+   - NASA Earth API Token: `eyJ0eXAiOiJKV1QiLCJvcmlnaW4iOiJFYXJ0aGRhdGEgTG9naW4iLCJzaWciOiJlZGxqd3RwdWJrZXlfb3BzIiwiYWxnIjoiUlMyNTYifQ...`
+   
+   **Google Maps API Setup:**
+   1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+   2. Create a new project or select existing one
+   3. Enable the "Maps JavaScript API"
+   4. Create credentials (API Key)
+   5. Add the key to your `.env.local` file as `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`
 
 4. **Run the development server**
    ```bash

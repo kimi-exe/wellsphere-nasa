@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useMemo, useCallback } from 'react';
-import { MapContainer, TileLayer, Polyline, Popup, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Polyline, Popup, useMap, useMapEvents } from 'react-leaflet';
 import { fastRoadService, type FastRoadSegment } from '../services/fastRoadService';
 
 interface FastRoadMapProps {
@@ -15,6 +15,16 @@ interface FastRoadMapProps {
     poor?: boolean;
     very_poor?: boolean;
   };
+}
+
+// Map events handler for zoom changes
+function MapEvents({ onZoomChange }: { onZoomChange: (zoom: number) => void }) {
+  const map = useMapEvents({
+    zoomend: () => {
+      onZoomChange(map.getZoom());
+    },
+  });
+  return null;
 }
 
 // Level of Detail component - only renders roads based on zoom level
@@ -265,11 +275,6 @@ export default function FastRoadMap({
         zoomControl={true}
         attributionControl={false}
         preferCanvas={true} // Use Canvas for better performance
-        eventHandlers={{
-          zoomend: (e) => {
-            handleZoomChange(e.target.getZoom());
-          }
-        }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -280,6 +285,9 @@ export default function FastRoadMap({
           updateWhenIdle={true}
           keepBuffer={2}
         />
+        
+        {/* Map Events Handler */}
+        <MapEvents onZoomChange={handleZoomChange} />
         
         {/* Level of Detail Road Renderer */}
         <LODRoadRenderer 

@@ -1,0 +1,249 @@
+# WellSphere NASA Space Apps Challenge 2025 - Data Sources & APIs
+
+## 🌍 APPLICATION OVERVIEW
+WellSphere is an environmental monitoring platform that helps people in Bangladesh identify dangerous areas around airports and assess environmental risks for safe housing decisions. The app integrates multiple NASA and government data sources to provide real-time environmental hazard monitoring.
+
+## 📊 DATA SOURCES & APIs USED
+
+### 1. NASA APIs & DATA SOURCES
+**Primary Usage**: Environmental satellite data, temperature monitoring, and soil quality assessment
+
+#### NASA Earthdata APIs:
+- **NASA Earth Observation Data**: https://api.nasa.gov/planetary/earth/
+- **NASA CMR (Common Metadata Repository)**: https://cmr.earthdata.nasa.gov/search
+- **NASA Earth Science Data**: Real-time satellite imagery and environmental data
+- **API Key Used**: Jv2QqcXN3ZPZRrIXKmjHQM7yqkmwNpMiKB7sNbOj
+
+**Data Types Collected**:
+- Surface temperature data from MODIS satellite
+- Land surface temperature analysis
+- Soil moisture and pH levels
+- Environmental change detection
+- Thermal infrared imagery analysis
+
+#### NASA Data Applications in WellSphere:
+- **Temperature Monitoring**: Real-time heat island effect detection in urban areas
+- **Soil Quality Assessment**: pH levels, moisture content, and soil health indicators
+- **Environmental Hazard Detection**: Identification of environmental danger zones
+- **Climate Pattern Analysis**: Long-term temperature and environmental trends
+
+### 2. USGS (United States Geological Survey) EARTHQUAKE API
+**Primary Usage**: Real-time earthquake monitoring for Bangladesh and surrounding regions
+
+#### USGS Earthquake API:
+- **Endpoint**: https://earthquake.usgs.gov/fdsnws/event/1/query
+- **Data Format**: GeoJSON
+- **Coverage**: Global earthquake data with focus on South Asia region
+- **Update Frequency**: Real-time (updated every minute)
+
+**Parameters Used**:
+- Geographic bounds covering Bangladesh and neighboring areas
+- Magnitude threshold: 2.0+ (to capture relevant seismic activity)
+- Time range: Last 30 days of seismic activity
+- Maximum radius: 500km from major Bangladesh cities
+
+**Earthquake Data Points**:
+- Magnitude and intensity measurements
+- Geographic coordinates (latitude/longitude)
+- Depth of earthquake epicenter
+- Seismic significance scores
+- Tsunami risk indicators
+- Historical earthquake patterns
+
+### 3. NOAA (National Oceanic and Atmospheric Administration) WEATHER DATA
+**Primary Usage**: Weather hazard monitoring including floods, heatwaves, and extreme weather
+
+#### NOAA Weather APIs:
+- **Weather Hazard Data**: Real-time weather alerts and warnings
+- **Flood Risk Assessment**: River levels and flood probability
+- **Heatwave Detection**: Temperature extremes and heat index calculations
+- **Severe Weather Alerts**: Storm tracking and weather emergency notifications
+
+**Weather Data Applications**:
+- **Flood Risk Mapping**: River basin monitoring and flood plain identification
+- **Heat Index Calculation**: Real-feel temperature with humidity factors
+- **Extreme Weather Alerts**: Cyclone, storm, and severe weather tracking
+- **Agricultural Impact Assessment**: Weather impact on crops and soil
+
+### 4. BANGLADESH AIRPORTS AUTHORITY DATA
+**Primary Usage**: Airport locations, flight patterns, and safety zone determination
+
+#### Airport Database Coverage:
+**International Airports (3):**
+- Hazrat Shahjalal International Airport (Dhaka) - 8km danger zone
+- Shah Amanat International Airport (Chittagong) - 6km danger zone  
+- Osmani International Airport (Sylhet) - 5km danger zone
+
+**Domestic Airports (4):**
+- Cox's Bazar Airport - 4km danger zone
+- Jessore Airport - 3.5km danger zone
+- Shah Makhdum Airport (Rajshahi) - 3km danger zone
+- Barisal Airport - 2.5km danger zone
+
+**STOL Ports (1):**
+- Ishwardi Airport - 2km danger zone
+
+#### Airport Danger Zone Analysis:
+- **Noise Pollution Mapping**: 70-90 dB impact zones around airports
+- **Air Quality Impact**: Jet emission pollution patterns
+- **Safety Risk Assessment**: Flight path hazard zones
+- **Property Value Analysis**: Real estate impact within danger zones
+
+### 5. OPENSTREETMAP & OVERPASS API
+**Primary Usage**: Comprehensive road network data and base mapping
+
+#### OpenStreetMap Integration:
+- **Tile Server**: https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+- **Overpass API**: https://overpass-api.de/api/interpreter
+- **Geographic Context**: Detailed Bangladesh map with cities, roads, and landmarks
+- **Coordinate System**: WGS84 (World Geodetic System 1984)
+- **Zoom Levels**: 1-18 (country level to street level detail)
+
+#### Comprehensive Road Network Data:
+- **Complete Road Coverage**: Every street, highway, and path in Bangladesh cities
+- **Road Types**: Motorway, trunk, primary, secondary, tertiary, residential, service, track, path
+- **Real-time Data**: Live road network updates from OpenStreetMap contributors
+- **Quality Assessment**: AI-powered road condition analysis based on surface, type, and location
+- **Traffic Analysis**: Automatic traffic level assessment based on road classification
+
+### 6. SYNTHETIC DATA GENERATION
+**Primary Usage**: Enhanced data modeling when real-time APIs are unavailable
+
+#### Synthetic Data Sources:
+- **Realistic Environmental Patterns**: Based on historical NASA satellite data
+- **Geographic Modeling**: Using actual coordinates and regional characteristics
+- **Seasonal Variation Modeling**: Temperature, humidity, and weather patterns
+- **Urban Heat Island Effects**: City-specific temperature modeling
+
+## 🗺️ GEOGRAPHIC COVERAGE
+
+### Bangladesh Regions Covered:
+1. **Dhaka Division**: Complete metropolitan area mapping
+2. **Chittagong Division**: Coastal and hill region environmental data
+3. **Sylhet Division**: Tea garden and wetland ecosystems
+4. **Rajshahi Division**: Agricultural heartland monitoring
+5. **Khulna Division**: Sundarbans and coastal areas
+6. **Barisal Division**: River delta environmental data
+7. **Mymensingh Division**: River basin and agricultural zones
+8. **Rangpur Division**: Northern agricultural regions
+
+### Coordinate Reference System:
+- **Primary**: WGS84 (EPSG:4326)
+- **Latitude Range**: 20.25° N to 26.75° N
+- **Longitude Range**: 87.75° E to 92.75° E
+- **Precision**: 5 decimal places (~1.1 meter accuracy)
+
+## 🔄 DATA UPDATE FREQUENCIES
+
+### Real-Time Data (1-15 minutes):
+- USGS Earthquake monitoring
+- NASA satellite temperature readings
+- NOAA weather alerts and warnings
+
+### Hourly Updates (1-6 hours):
+- Environmental hazard assessments
+- Air quality measurements
+- Soil condition monitoring
+
+### Daily Updates (24 hours):
+- Historical trend analysis
+- Long-term environmental patterns
+- Agricultural and land use impacts
+
+### Static Data (Updated as needed):
+- Airport locations and danger zones
+- Geographic boundaries and regions
+- Infrastructure and transportation networks
+
+## 🛡️ DATA RELIABILITY & VALIDATION
+
+### Primary Data Sources (Highest Reliability):
+- **NASA Earthdata**: Official satellite observations
+- **USGS Earthquake Data**: Authoritative seismic monitoring
+- **NOAA Weather Data**: Official weather service data
+
+### Secondary Data Sources (Enhanced with Modeling):
+- **Environmental Projections**: Based on historical patterns and current trends
+- **Risk Assessment Models**: Combining multiple data sources for comprehensive analysis
+- **Predictive Analytics**: Using historical data to forecast environmental risks
+
+### Data Validation Methods:
+- **Cross-Reference Verification**: Multiple API sources for accuracy
+- **Historical Consistency Checks**: Comparing with known environmental patterns
+- **Geographic Validation**: Ensuring coordinates match real-world locations
+- **Range Validation**: Checking data values against expected environmental norms
+
+## 📱 TECHNICAL IMPLEMENTATION
+
+### Frontend Technologies:
+- **Next.js 15**: React-based web application framework
+- **Leaflet Maps**: Interactive mapping library
+- **React-Leaflet**: React integration for mapping components
+- **Framer Motion**: Smooth animations and user interactions
+
+### Backend APIs:
+- **Next.js API Routes**: Server-side data processing
+- **Node.js Runtime**: JavaScript execution environment
+- **TypeScript**: Type-safe development and data validation
+- **Overpass QL**: Query language for OpenStreetMap data extraction
+
+### Data Processing:
+- **Real-time Data Aggregation**: Combining multiple API sources
+- **Geographic Information Systems (GIS)**: Spatial data analysis
+- **Environmental Data Modeling**: Risk assessment calculations
+- **Road Quality AI Analysis**: Automated condition assessment algorithms
+- **Caching Strategy**: Optimized data retrieval and storage (15-minute cache)
+- **Comprehensive Coverage**: 2500+ road segments per major city
+
+### Road Quality Assessment Algorithm:
+- **Multi-factor Analysis**: Surface type, highway classification, location context
+- **Environmental Integration**: Flood risk, monsoon damage, traffic levels
+- **Quality Scoring**: 0-100 condition score with 5-tier quality rating
+- **Real-time Updates**: Dynamic quality assessment based on current conditions
+
+## 🎯 COMPETITION RELEVANCE
+
+### NASA Space Apps Challenge 2025 Alignment:
+- **Earth Observation Data**: Direct use of NASA satellite imagery
+- **Environmental Monitoring**: Real-time hazard detection and assessment
+- **Public Safety Application**: Helping people make informed housing decisions
+- **Open Data Integration**: Combining NASA data with other authoritative sources
+
+### Problem Solving Focus:
+- **Airport Safety Awareness**: Preventing people from building homes in dangerous airport zones
+- **Environmental Risk Assessment**: Comprehensive hazard mapping for Bangladesh
+- **Data-Driven Decision Making**: Providing scientific data for housing and urban planning
+- **Public Health Protection**: Identifying areas with noise pollution, air pollution, and safety risks
+
+## 📚 REFERENCES & DOCUMENTATION
+
+### API Documentation:
+- NASA Earthdata: https://earthdata.nasa.gov/
+- USGS Earthquake API: https://earthquake.usgs.gov/fdsnws/
+- NOAA Weather API: https://www.weather.gov/documentation/services-web-api
+- OpenStreetMap: https://wiki.openstreetmap.org/wiki/API
+
+### Data Standards:
+- GeoJSON: Geographic data interchange format
+- WGS84: World Geodetic System coordinate reference
+- ISO 8601: International date/time standard
+- HTTP REST: Web service communication protocol
+
+### Quality Assurance:
+- Real-time data validation against authoritative sources
+- Geographic accuracy verification using official coordinates
+- Environmental data range checking against scientific norms
+- User interface testing for accessibility and usability
+
+---
+
+## 📧 CONTACT INFORMATION
+
+**Project Name**: WellSphere NASA Space Apps Challenge 2025
+**Primary Focus**: Airport Danger Zone Mapping for Bangladesh
+**Data Sources**: NASA, USGS, NOAA, Bangladesh Airports Authority
+**Geographic Coverage**: Complete Bangladesh territory
+**Update Frequency**: Real-time to daily depending on data type
+**Technical Stack**: Next.js, TypeScript, Leaflet Maps, NASA APIs
+
+This comprehensive data integration ensures WellSphere provides accurate, up-to-date environmental information to help Bangladesh citizens make informed decisions about housing locations and environmental safety.

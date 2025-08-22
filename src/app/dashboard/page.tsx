@@ -12,7 +12,9 @@ import {
   Gamepad2,
   Leaf,
   LogOut,
-  MapIcon
+  MapIcon,
+  Plane,
+  Route
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -37,6 +39,8 @@ export default function Dashboard() {
     { id: 'flood', label: 'Flood', icon: Droplets, href: '/dashboard/flood' },
     { id: 'soil', label: 'Soil Quality', icon: Mountain, href: '/dashboard/soil' },
     { id: 'earthquake', label: 'Earthquake', icon: Activity, href: '/dashboard/earthquake' },
+    { id: 'airport-zones', label: 'Airport Zones', icon: Plane, href: '/dashboard/airport-zones' },
+    { id: 'road-quality', label: 'Road Quality', icon: Route, href: '/dashboard/road-quality' },
     { id: 'environmental-map', label: 'Risk Map', icon: MapIcon, href: '/dashboard/environmental-map' },
     { id: 'analytics', label: 'Analytics', icon: BarChart3, href: '/dashboard/analytics' },
     { id: 'game', label: 'Game', icon: Gamepad2, href: '/dashboard/game' },
@@ -307,16 +311,82 @@ export default function Dashboard() {
             </motion.div>
           </div>
 
+          {/* Road Quality Assessment Feature */}
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className="mt-8 bg-gradient-to-r from-blue-600/20 via-blue-700/20 to-blue-600/20 backdrop-blur-lg border border-blue-500/30 rounded-xl p-6"
+          >
+            <Link href="/dashboard/road-quality">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-4">
+                  <div className="p-3 bg-blue-500/20 rounded-lg">
+                    <Route className="text-blue-400" size={32} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white">🛣️ Comprehensive Road Network</h3>
+                    <p className="text-gray-300 text-sm">
+                      Complete city road coverage with real OpenStreetMap data - every street mapped!
+                    </p>
+                    <div className="flex items-center space-x-4 mt-2 text-xs text-gray-400">
+                      <span>• 2500+ roads per city</span>
+                      <span>• Real Overpass API data</span>
+                      <span>• Every street covered</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
+                    NEW
+                  </div>
+                  <p className="text-xs text-gray-400 mt-1">Click to explore →</p>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+
+          {/* Airport Danger Zones Feature */}
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className="mt-4 bg-gradient-to-r from-red-600/20 via-red-700/20 to-red-600/20 backdrop-blur-lg border border-red-500/30 rounded-xl p-6"
+          >
+            <Link href="/dashboard/airport-zones">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-4">
+                  <div className="p-3 bg-red-500/20 rounded-lg">
+                    <Plane className="text-red-400" size={32} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white">⚠️ Airport Danger Zones</h3>
+                    <p className="text-gray-300 text-sm">
+                      View dangerous areas around Bangladesh airports - avoid building homes here!
+                    </p>
+                    <div className="flex items-center space-x-4 mt-2 text-xs text-gray-400">
+                      <span>• Noise pollution zones</span>
+                      <span>• Safety risk areas</span>
+                      <span>• Property value impact</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
+                    HOT
+                  </div>
+                  <p className="text-xs text-gray-400 mt-1">Click to explore →</p>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+
           {/* Environmental Risk Map Feature */}
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="mt-8 bg-gradient-to-r from-red-600/20 via-orange-600/20 to-red-600/20 backdrop-blur-lg border border-red-500/30 rounded-xl p-6"
+            className="mt-4 bg-gradient-to-r from-orange-600/20 via-orange-700/20 to-orange-600/20 backdrop-blur-lg border border-orange-500/30 rounded-xl p-6"
           >
             <Link href="/dashboard/environmental-map">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
-                  <div className="p-3 bg-red-500/20 rounded-lg">
-                    <MapIcon className="text-red-400" size={32} />
+                  <div className="p-3 bg-orange-500/20 rounded-lg">
+                    <MapIcon className="text-orange-400" size={32} />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white">🚨 Environmental Risk Map</h3>
@@ -331,8 +401,8 @@ export default function Dashboard() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
-                    NEW
+                  <div className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                    UPDATED
                   </div>
                   <p className="text-xs text-gray-400 mt-1">Click to explore →</p>
                 </div>

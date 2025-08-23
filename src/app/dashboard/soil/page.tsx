@@ -725,7 +725,7 @@ export default function SoilPage() {
             <div className="lg:col-span-1">
               <h3 className="text-lg font-semibold mb-4 text-red-400">⚠️ Degradation Alerts</h3>
               <div className="space-y-3">
-                {soilData?.aiPredictions?.filter(pred => pred.riskLevel === 'extreme' || pred.riskLevel === 'high').slice(0, 4).map((prediction: any, index: number) => (
+                {soilData?.aiPredictions?.filter((pred: any) => pred.riskLevel === 'extreme' || pred.riskLevel === 'high').slice(0, 4).map((prediction: any, index: number) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}

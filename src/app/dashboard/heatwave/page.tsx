@@ -68,11 +68,11 @@ export default function HeatwavePage() {
 
   const generateMockData = () => {
     // Generate detailed data with 100+ points for complex visualization
-    const years = [];
-    const temperatures = [];
-    const heatwaveDays = [];
-    const dailyData = [];
-    const hourlyData = [];
+    const years: string[] = [];
+    const temperatures: number[] = [];
+    const heatwaveDays: number[] = [];
+    const dailyData: any[] = [];
+    const hourlyData: any[] = [];
     
     // Generate 50 years of annual data
     for (let year = 1975; year <= 2025; year++) {
@@ -543,7 +543,7 @@ export default function HeatwavePage() {
             <div className="lg:col-span-1">
               <h3 className="text-lg font-semibold mb-4 text-red-400">🚨 Critical Alerts</h3>
               <div className="space-y-3">
-                {heatwaveData?.aiPredictions?.filter(pred => pred.riskLevel === 'extreme').slice(0, 3).map((prediction: any, index: number) => (
+                {heatwaveData?.aiPredictions?.filter((pred: any) => pred.riskLevel === 'extreme').slice(0, 3).map((prediction: any, index: number) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}

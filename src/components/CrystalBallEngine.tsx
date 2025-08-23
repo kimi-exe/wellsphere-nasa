@@ -630,16 +630,16 @@ export default function CrystalBallEngine() {
         const coordinates = (feature.geometry as any).coordinates;
         
         const prediction: PredictionPopup = {
-          location: properties.city ? `${properties.city}, ${properties.district}` : `${coordinates[1].toFixed(4)}, ${coordinates[0].toFixed(4)}`,
+          location: properties?.city ? `${properties.city}, ${properties.district}` : `${coordinates[1].toFixed(4)}, ${coordinates[0].toFixed(4)}`,
           currentScore: 85,
-          futureScore: properties.score,
+          futureScore: properties?.score || 0,
           year: currentYear,
           risks: [
-            properties.climate < 50 ? 'High climate risk' : '',
-            properties.flood < 40 ? 'Severe flood risk' : '',
-            properties.airQuality < 30 ? 'Poor air quality' : ''
+            (properties?.climate || 0) < 50 ? 'High climate risk' : '',
+            (properties?.flood || 0) < 40 ? 'Severe flood risk' : '',
+            (properties?.airQuality || 0) < 30 ? 'Poor air quality' : ''
           ].filter(Boolean),
-          recommendations: properties.city && properties.city !== 'Rural Area' ? [
+          recommendations: properties?.city && properties.city !== 'Rural Area' ? [
             'Urban planning improvements needed',
             'Green infrastructure development',
             'Climate adaptation measures',

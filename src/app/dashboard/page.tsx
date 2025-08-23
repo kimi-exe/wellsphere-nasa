@@ -13,8 +13,7 @@ import {
   Leaf,
   LogOut,
   MapIcon,
-  Plane,
-  Route
+  Plane
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -41,7 +40,6 @@ export default function Dashboard() {
     { id: 'soil', label: 'Soil Quality', icon: Mountain, href: '/dashboard/soil' },
     { id: 'earthquake', label: 'Earthquake', icon: Activity, href: '/dashboard/earthquake' },
     { id: 'airport-zones', label: 'Airport Zones', icon: Plane, href: '/dashboard/airport-zones' },
-    { id: 'road-quality', label: 'Road Quality', icon: Route, href: '/dashboard/road-quality' },
     { id: 'environmental-map', label: 'Risk Map', icon: MapIcon, href: '/dashboard/environmental-map' },
     { id: 'analytics', label: 'Analytics', icon: BarChart3, href: '/dashboard/analytics' },
     { id: 'game', label: 'Game', icon: Gamepad2, href: '/dashboard/game' },

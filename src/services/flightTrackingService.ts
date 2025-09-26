@@ -76,7 +76,7 @@ export class FlightTrackingService {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
-          'User-Agent': 'WellSphere-NASA-FlightTracker/1.0'
+          'User-Agent': 'Oasis-NASA-FlightTracker/1.0'
         },
         mode: 'cors' // Enable CORS
       });

@@ -75,7 +75,7 @@ async function fetchEarthquakeData(): Promise<EnvironmentalDataPoint[]> {
       { 
         next: { revalidate: 300 }, // Cache for 5 minutes
         headers: {
-          'User-Agent': 'WellSphere-NASA-App/1.0'
+          'User-Agent': 'Oasis-NASA-App/1.0'
         }
       }
     );

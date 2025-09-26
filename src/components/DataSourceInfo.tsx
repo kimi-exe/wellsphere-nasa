@@ -136,7 +136,7 @@ export default function DataSourceInfo({ compact = false, showSatellites = true 
       </div>
 
       <p className="text-gray-300 mb-6 leading-relaxed">
-        WellSphere integrates data from multiple NASA and international Earth observation platforms, 
+        Oasis integrates data from multiple NASA and international Earth observation platforms, 
         providing comprehensive environmental monitoring through cutting-edge satellite technology and ground-based sensors.
       </p>
 

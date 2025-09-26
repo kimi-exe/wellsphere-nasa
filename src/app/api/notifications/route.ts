@@ -8,7 +8,7 @@ const createTransporter = () => {
   return nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.EMAIL_USER || 'demo@wellsphere.com',
+      user: process.env.EMAIL_USER || 'demo@oasis.com',
       pass: process.env.EMAIL_PASS || 'demo-password'
     }
   });
@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #000; color: #fff; padding: 20px;">
               <div style="text-align: center; margin-bottom: 30px;">
-                <h1 style="color: #ef4444; margin: 0;">WellSphere</h1>
+                <h1 style="color: #ef4444; margin: 0;">Oasis</h1>
                 <p style="color: #9ca3af; margin: 5px 0;">Empowering Cities, Enhancing Health</p>
               </div>
               
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
               
               <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
                 <p style="color: #9ca3af; font-size: 14px;">
-                  This notification was sent from WellSphere Environmental Monitoring System
+                  This notification was sent from Oasis Environmental Monitoring System
                   <br>NASA Space Apps Challenge 2025
                 </p>
               </div>
@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #000; color: #fff; padding: 20px;">
               <div style="text-align: center; margin-bottom: 30px;">
-                <h1 style="color: #3b82f6; margin: 0;">WellSphere</h1>
+                <h1 style="color: #3b82f6; margin: 0;">Oasis</h1>
                 <p style="color: #9ca3af; margin: 5px 0;">Empowering Cities, Enhancing Health</p>
               </div>
               
@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #000; color: #fff; padding: 20px;">
               <div style="text-align: center; margin-bottom: 30px;">
-                <h1 style="color: #f59e0b; margin: 0;">WellSphere</h1>
+                <h1 style="color: #f59e0b; margin: 0;">Oasis</h1>
                 <p style="color: #9ca3af; margin: 5px 0;">Empowering Cities, Enhancing Health</p>
               </div>
               
@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #000; color: #fff; padding: 20px;">
               <div style="text-align: center; margin-bottom: 30px;">
-                <h1 style="color: #10b981; margin: 0;">WellSphere</h1>
+                <h1 style="color: #10b981; margin: 0;">Oasis</h1>
                 <p style="color: #9ca3af; margin: 5px 0;">Empowering Cities, Enhancing Health</p>
               </div>
               
@@ -141,7 +141,7 @@ export async function POST(request: NextRequest) {
     /*
     const transporter = createTransporter();
     await transporter.sendMail({
-      from: process.env.EMAIL_USER || 'noreply@wellsphere.com',
+      from: process.env.EMAIL_USER || 'noreply@oasis.com',
       to: email,
       subject,
       html

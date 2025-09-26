@@ -17,7 +17,7 @@ export default function Loading() {
           </div>
         </div>
         <h2 className="text-xl font-semibold mb-2 bg-gradient-to-r from-white to-red-400 bg-clip-text text-transparent">
-          WellSphere
+          Oasis
         </h2>
         <p className="text-gray-400 text-sm">
           Loading environmental data...

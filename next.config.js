@@ -8,6 +8,10 @@ const nextConfig = {
     // Allow production builds even with TypeScript errors (warnings only)
     ignoreBuildErrors: false,
   },
+  // Turbopack configuration
+  turbopack: {
+    root: __dirname,
+  },
   // Handle CORS for API routes
   async headers() {
     return [

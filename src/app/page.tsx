@@ -46,7 +46,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 text-white relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Cosmic dust particles */}
@@ -92,7 +92,7 @@ export default function Home() {
             >
               <Leaf className="text-red-400" size={32} />
               <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-red-400 bg-clip-text text-transparent">
-                WellSphere
+                Oasis
               </h1>
             </motion.div>
             
@@ -186,7 +186,7 @@ export default function Home() {
               className="w-full bg-gradient-to-r from-red-500 to-red-600 text-white font-bold py-4 px-6 rounded-xl hover:from-red-600 hover:to-red-700 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Satellite className="w-5 h-5" />
-              <span>Enter WellSphere</span>
+              <span>Enter Oasis</span>
             </motion.button>
           </form>
 

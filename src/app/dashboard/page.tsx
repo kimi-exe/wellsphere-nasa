@@ -52,20 +52,143 @@ export default function Dashboard() {
 
   if (!userInfo) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-white">Loading...</div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 flex items-center justify-center">
+        <div className="text-center">
+          <motion.div
+            className="w-8 h-8 border-2 border-cyan-400 border-t-transparent rounded-full mx-auto mb-4"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          />
+          <div className="text-white text-xl font-medium">Loading Dashboard...</div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+    <div className="min-h-screen text-white relative overflow-hidden">
+      {/* Professional Animated Background */}
+      <div className="fixed inset-0 z-0">
+        {/* Clean Gradient Base */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900" />
+        
+        {/* Geometric Grid Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
+        
+        {/* Floating Corporate Elements */}
+        <motion.div
+          className="absolute w-96 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-30"
+          animate={{
+            x: [-400, window?.innerWidth || 1920],
+            opacity: [0, 1, 0]
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 0
+          }}
+          style={{ top: '20%' }}
+        />
+        
+        <motion.div
+          className="absolute w-96 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-30"
+          animate={{
+            x: [-400, window?.innerWidth || 1920],
+            opacity: [0, 1, 0]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 7
+          }}
+          style={{ top: '60%' }}
+        />
+        
+        {/* Data Flow Lines */}
+        <motion.div
+          className="absolute w-0.5 h-96 bg-gradient-to-b from-transparent via-blue-400 to-transparent opacity-20"
+          animate={{
+            y: [-400, window?.innerHeight || 1080],
+            opacity: [0, 1, 0]
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 3
+          }}
+          style={{ left: '30%' }}
+        />
+        
+        {/* Subtle Pulsing Nodes */}
+        <motion.div
+          className="absolute w-3 h-3 bg-cyan-400 rounded-full opacity-60"
+          animate={{
+            scale: [0.5, 1.5, 0.5],
+            opacity: [0.3, 0.8, 0.3]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          style={{ left: '15%', top: '25%' }}
+        />
+        
+        <motion.div
+          className="absolute w-2 h-2 bg-emerald-400 rounded-full opacity-50"
+          animate={{
+            scale: [0.8, 1.2, 0.8],
+            opacity: [0.2, 0.6, 0.2]
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+          style={{ right: '20%', top: '40%' }}
+        />
+        
+        <motion.div
+          className="absolute w-4 h-4 bg-blue-400 rounded-full opacity-40"
+          animate={{
+            scale: [0.3, 1, 0.3],
+            opacity: [0.1, 0.5, 0.1]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 4
+          }}
+          style={{ left: '70%', bottom: '30%' }}
+        />
+        
+        {/* Professional Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent" />
+        
+        {/* Corporate Accent Lines */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-400 opacity-50" />
+        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-emerald-400 via-cyan-500 to-blue-400 opacity-30" />
+      </div>
       {/* Navigation Bar */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        className="bg-white/5 backdrop-blur-lg border-b border-white/10 sticky top-0 z-50"
+        className="bg-white/10 backdrop-blur-xl border-b border-white/20 sticky top-0 z-50 shadow-lg"
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
@@ -73,7 +196,7 @@ export default function Dashboard() {
             <div className="flex items-center space-x-2">
               <Leaf className="text-red-400" size={24} />
               <span className="text-xl font-bold bg-gradient-to-r from-white to-red-400 bg-clip-text text-transparent">
-                WellSphere
+                Oasis
               </span>
             </div>
 

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(pkill:*)",
+      "Bash(taskkill:*)",
+      "Bash(npm run lint)",
+      "Bash(npx tsc:*)",
+      "Bash(cmd //c:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -2,18 +2,19 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  MapIcon, 
-  AlertTriangle, 
-  Plane, 
-  Home, 
+import {
+  MapIcon,
+  AlertTriangle,
+  Plane,
+  Home,
   Volume2,
   Wind,
   TrendingDown,
   Info,
   Filter,
   Eye,
-  EyeOff
+  EyeOff,
+  ExternalLink
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { bangladeshAirports } from '../../../services/airportService';
@@ -95,10 +96,26 @@ export default function AirportZones() {
             <h1 className="text-2xl font-bold text-red-400">Airport Danger Zones</h1>
             <Plane className="text-red-400" size={24} />
           </motion.div>
-          <p className="text-gray-300 max-w-3xl mx-auto">
-            Interactive map showing dangerous areas around airports in Bangladesh. Red circles indicate zones where living poses 
+
+          <p className="text-gray-300 max-w-3xl mx-auto mb-6">
+            Interactive map showing dangerous areas around airports in Bangladesh. Red circles indicate zones where living poses
             health and safety risks due to noise pollution, air pollution, and flight path hazards.
           </p>
+
+          <motion.a
+            href="https://aeroplanner-pro.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/30 rounded-lg px-6 py-3 text-blue-300 hover:from-blue-600/30 hover:to-cyan-600/30 hover:border-blue-400/50 transition-all shadow-lg hover:shadow-blue-500/20"
+          >
+            <span className="font-medium">🛫 Design Near Airport</span>
+            <ExternalLink size={18} />
+          </motion.a>
         </div>
 
         {/* Inspirational Article */}

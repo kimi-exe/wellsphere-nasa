@@ -84,7 +84,7 @@ Our platform integrates with multiple NASA and external APIs:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/wellsphere-nasa.git
+   git clone https://github.com/kimi-exe/wellsphere-nasa.git
    cd wellsphere-nasa
    ```
 
